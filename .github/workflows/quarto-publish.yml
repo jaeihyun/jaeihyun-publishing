@@ -24,56 +24,26 @@ jobs:
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: pre-release
 
-      - name: Setup R (for any R dependencies)
-        uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: '4.3.0'
-          
-      - name: Setup Python (for any Python dependencies)
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Render Main Website
-        run: quarto render --to html
-          
-      - name: Render Books
+      - name: Debug - Check file structure
         run: |
-          # 시골 경험기 렌더링
-          if [ -d "books/rural-experience" ]; then
-            echo "Rendering 시골 경험기..."
-            cd books/rural-experience
-            quarto render --to html
-            cd ../..
-          fi
-          
-          # 도시 일기 렌더링
-          if [ -d "books/urban-diary" ]; then
-            echo "Rendering 도시 일기..."
-            cd books/urban-diary
-            quarto render --to html
-            cd ../..
-          fi
-          
-          # 여행 수첩 렌더링 (예정)
-          if [ -d "books/travel-notes" ]; then
-            echo "Rendering 여행 수첩..."
-            cd books/travel-notes
-            quarto render --to html
-            cd ../..
-          fi
+          echo "=== Root directory ==="
+          ls -la
+          echo "=== Books directory ==="
+          ls -la books/ || echo "books directory not found"
+          echo "=== Blog directory ==="
+          ls -la blog/ || echo "blog directory not found"
 
-      - name: Render Blog
+      - name: Render Quarto Project
         run: |
-          if [ -d "blog" ]; then
-            echo "Rendering Blog..."
-            cd blog
-            quarto render --to html
-            cd ..
-          fi
+          echo "Starting Quarto render..."
+          quarto render
+          echo "Quarto render completed"
+          
+      - name: Debug - Check output directory
+        run: |
+          echo "=== Checking docs directory ==="
+          ls -la docs/ || echo "docs directory not found"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

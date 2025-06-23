@@ -1,0 +1,252 @@
+/*-- scss:defaults --*/
+
+// Nord 색상 팔레트 기반 커스텀 테마
+$primary: #5E81AC;
+$secondary: #81A1C1;
+$success: #A3BE8C;
+$warning: #EBCB8B;
+$dark: #2E3440;
+$light: #ECEFF4;
+
+// 폰트 설정
+$font-family-sans-serif: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-serif: "Noto Serif KR", Georgia, serif;
+
+/*-- scss:rules --*/
+
+// 히어로 섹션
+.hero-banner {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+  margin: -2rem -2rem 3rem -2rem;
+  border-radius: 0 0 2rem 2rem;
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+  }
+}
+
+// 콘텐츠 컨테이너
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// 도서 그리드
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.book-item {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: $primary;
+  }
+  
+  .book-cover {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: $dark;
+    margin-bottom: 1rem;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+}
+
+// 블로그 미리보기
+.blog-preview {
+  background: $light;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      a {
+        color: $dark;
+        text-decoration: none;
+        
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+// CTA 섹션
+.cta-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin: 3rem 0;
+  
+  h2 {
+    color: $dark;
+    margin-bottom: 1rem;
+  }
+}
+
+// 버튼 스타일
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.25rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  
+  &.btn-primary {
+    background: $primary;
+    color: white;
+    border: 2px solid $primary;
+    
+    &:hover {
+      background: darken($primary, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-success {
+    background: $success;
+    color: white;
+    border: 2px solid $success;
+    
+    &:hover {
+      background: darken($success, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-warning {
+    background: $warning;
+    color: $dark;
+    border: 2px solid $warning;
+    
+    &:hover {
+      background: darken($warning, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-outline-primary {
+    background: transparent;
+    color: $primary;
+    border: 2px solid $primary;
+    
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-outline-secondary {
+    background: transparent;
+    color: $secondary;
+    border: 2px solid $secondary;
+    
+    &:hover {
+      background: $secondary;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+// 반응형 디자인
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 2rem 0;
+    margin: -1rem -1rem 2rem -1rem;
+    
+    h1 { 
+      font-size: 2rem; 
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  .books-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .book-item {
+    padding: 1.5rem;
+  }
+  
+  .content-container {
+    padding: 0 0.5rem;
+  }
+  
+  .cta-section {
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+  }
+}
+
+// 다크모드 지원 (선택사항)
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  .book-item {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+}

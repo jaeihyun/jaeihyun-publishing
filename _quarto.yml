@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "jaeihyun publishing"
+  description: "인문학과 일상을 담은 디지털 도서관"
+  site-url: "https://jaeihyun.github.io/jaeihyun-publishing"
+  repo-url: "https://github.com/jaeihyun/jaeihyun-publishing"
+  
+  navbar:
+    background: "#2E3440"
+    foreground: "#ECEFF4"
+    left:
+      - text: "홈"
+        href: index.qmd
+      - text: "도서관"
+        href: library.qmd
+      - text: "블로그"
+        href: blog/
+    right:
+      - text: "저자소개"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/jaeihyun/jaeihyun-publishing
+        
+  sidebar:
+    - title: "주요 도서"
+      contents:
+        - text: "시골 경험기"
+          href: books/rural-experience/
+        - text: "도시 일기"
+          href: books/urban-diary/
+        - text: "여행 수첩"
+          href: books/travel-notes/
+
+  page-footer:
+    center: 
+      - text: "© 2025 jaeihyun publishing"
+      - text: "이 사이트는 Quarto로 제작되었습니다"
+        href: https://quarto.org
+    background: "#2E3440"
+    foreground: "#ECEFF4"
+
+  search: 
+    location: navbar
+    type: overlay
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - styles/main.scss
+    css: styles/korean.css
+    lang: ko
+    fontsize: 1.1em
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    smooth-scroll: true
+    link-external-newwindow: true

@@ -1,0 +1,97 @@
+name: Build and Deploy jaeihyun publishing Platform
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: pre-release
+
+      - name: Setup R (for any R dependencies)
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.3.0'
+          
+      - name: Setup Python (for any Python dependencies)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Render Main Website
+        run: quarto render --to html
+          
+      - name: Render Books
+        run: |
+          # 시골 경험기 렌더링
+          if [ -d "books/rural-experience" ]; then
+            echo "Rendering 시골 경험기..."
+            cd books/rural-experience
+            quarto render --to html
+            cd ../..
+          fi
+          
+          # 도시 일기 렌더링
+          if [ -d "books/urban-diary" ]; then
+            echo "Rendering 도시 일기..."
+            cd books/urban-diary
+            quarto render --to html
+            cd ../..
+          fi
+          
+          # 여행 수첩 렌더링 (예정)
+          if [ -d "books/travel-notes" ]; then
+            echo "Rendering 여행 수첩..."
+            cd books/travel-notes
+            quarto render --to html
+            cd ../..
+          fi
+
+      - name: Render Blog
+        run: |
+          if [ -d "blog" ]; then
+            echo "Rendering Blog..."
+            cd blog
+            quarto render --to html
+            cd ..
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'docs'
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

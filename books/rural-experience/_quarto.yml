@@ -1,0 +1,98 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "시골 경험기"
+  subtitle: "도시를 떠나 자연과 함께한 1년의 기록"
+  author: 
+    - name: "jaeihyun"
+      url: "https://jaeihyun.org"
+      affiliation: "jaeihyun publishing"
+  
+  date: "2025-06-21"
+  description: |
+    도시 생활에 지친 한 사람이 시골로 떠나면서 겪은 경험들을 솔직하고 따뜻하게 담은 기록입니다.
+    자연과 더불어 살아가는 삶의 소중함과 지혜를 발견해 나가는 1년간의 여정을 담았습니다.
+  
+  cover-image: "../images/rural-cover.jpg"
+  
+  chapters:
+    - index.qmd
+    - part: "1부: 떠나는 마음"
+      chapters:
+        - chapters/01-decision.qmd
+        - chapters/02-preparation.qmd
+        - chapters/03-farewell.qmd
+    - part: "2부: 정착의 시간"
+      chapters:
+        - chapters/04-arrival.qmd
+        - chapters/05-neighbors.qmd
+        - chapters/06-daily-life.qmd
+        - chapters/07-seasons.qmd
+    - part: "3부: 자연과 함께"
+      chapters:
+        - chapters/08-farming.qmd
+        - chapters/09-animals.qmd
+        - chapters/10-meditation.qmd
+        - chapters/11-community.qmd
+    - part: "4부: 새로운 시작"
+      chapters:
+        - chapters/12-reflection.qmd
+        - chapters/13-growth.qmd
+        - chapters/14-future.qmd
+    - references.qmd
+  
+  navbar:
+    background: "#4A5D23"
+    foreground: "#F8F9FA"
+    left:
+      - text: "← 도서관으로"
+        href: "../../library.qmd"
+      - text: "홈"
+        href: "../../index.qmd"
+    right:
+      - text: "목차"
+        href: "#목차"
+
+  sidebar:
+    background: "#F8F9FA"
+    
+  page-footer:
+    left: "© 2025 jaeihyun publishing"
+    right: 
+      - text: "이 책 공유하기"
+        href: "https://github.com/jaeihyun/jaeihyun-publishing/tree/main/books/rural-experience"
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - ../../styles/main.scss
+    css: 
+      - ../../styles/korean.css
+      - styles/book.css
+    lang: ko
+    fontsize: 1.1em
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    code-fold: true
+    
+  pdf:
+    pdf-engine: xelatex
+    documentclass: book
+    geometry:
+      - margin=1in
+    fontsize: 11pt
+    mainfont: "Noto Serif KR"
+    sansfont: "Noto Sans KR"
+    
+  epub:
+    cover-image: "../images/rural-cover.jpg"
+    stylesheet: styles/epub.css
+
+execute:
+  freeze: auto

@@ -1,0 +1,63 @@
+/* 책 전용 스타일 */
+
+/* 책 표지 */
+.book-cover-intro {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 0 auto 2rem auto;
+  display: block;
+}
+
+/* 책 소개 섹션 */
+.book-intro {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* 챕터 제목 */
+.chapter-intro {
+  font-style: italic;
+  text-align: center;
+  font-size: 1.2em;
+  color: #6c757d;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+/* 챕터 끝 */
+.chapter-end {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 1rem;
+  border-left: 4px solid #4A5D23;
+}
+
+/* 독자 후기 */
+.reader-reviews {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+}
+
+.reader-reviews blockquote {
+  border-left: 4px solid #4A5D23;
+  margin: 1rem 0;
+}
+
+/* 책 네비게이션 */
+.book-navigation {
+  text-align: center;
+  padding: 2rem;
+  background: #e9ecef;
+  border-radius: 1rem;
+  margin-top: 3rem;
+}

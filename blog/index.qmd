@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "jaeihyun blog"
+  description: "일상의 철학과 글쓰기 이야기"
+  site-url: "https://jaeihyun.org/blog"
+  
+  navbar:
+    background: "#2E3440"
+    foreground: "#ECEFF4"
+    left:
+      - text: "← 메인으로"
+        href: "../index.qmd"
+      - text: "블로그 홈"
+        href: index.qmd
+      - text: "전체 글"
+        href: posts.qmd
+    right:
+      - text: "카테고리"
+        menu:
+          - text: "글쓰기"
+            href: categories/writing.qmd
+          - text: "일상"
+            href: categories/daily.qmd
+          - text: "여행"
+            href: categories/travel.qmd
+          - text: "책"
+            href: categories/books.qmd
+      - text: "태그"
+        href: tags.qmd
+
+  page-footer:
+    center: 
+      - text: "© 2025 jaeihyun publishing"
+    background: "#2E3440"
+    foreground: "#ECEFF4"
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - ../styles/main.scss
+    css: ../styles/korean.css
+    lang: ko
+    fontsize: 1.1em
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    date-format: "YYYY년 MM월 DD일"
+
+execute:
+  freeze: auto

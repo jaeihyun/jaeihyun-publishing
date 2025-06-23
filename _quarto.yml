@@ -29,10 +29,6 @@ website:
       contents:
         - text: "시골 경험기"
           href: books/rural-experience/
-        - text: "도시 일기"
-          href: books/urban-diary/
-        - text: "여행 수첩"
-          href: books/travel-notes/
 
   page-footer:
     center: 
